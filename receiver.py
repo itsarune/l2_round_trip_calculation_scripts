@@ -8,7 +8,6 @@ def test_rtt_receiver(pkt, dst_port: int, dst_mac: str, iface: str):
         return
     response = Ether(dst=dst_mac) / IP(dst=pkt[IP].src) / UDP(dport=pkt[UDP].sport, sport=dst_port) / pkt[Raw]
     sendp(response, iface=iface, verbose=False)
-    print("Sent response!")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
